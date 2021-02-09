@@ -16,13 +16,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class AggieFeedService {
 
-    public static final String QUERY_FOR_AGGIE_DATA = "https://aggiefeed.ucdavis.edu/api/v1/activity/public?s=0?l=25";
+
+    public int POST_OFFSET;
+    public int RESULTS_PER_PAGE;
+    public String QUERY_FOR_AGGIE_DATA;
     Context context;
 
     public AggieFeedService(Context context) {
         this.context = context;
+        POST_OFFSET = 0;
+        RESULTS_PER_PAGE = 25;
+        QUERY_FOR_AGGIE_DATA = "https://aggiefeed.ucdavis.edu/api/v1/activity/public?s=" + String.valueOf(this.POST_OFFSET) + "&l=" + String.valueOf(this.RESULTS_PER_PAGE);
     }
 
     // We use a callback to schedule method once fetchData method completes
